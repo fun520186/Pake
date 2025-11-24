@@ -148,6 +148,8 @@ runs:
           ~/.cargo/registry/cache/
           ~/.cargo/git/db/
           src-tauri/target/
-        key: ${{ runner.os }}-cargo-${{ hashFiles('node_modules/pake-cli/src-tauri/Cargo.lock') }}
+          node_modules/pake-cli/src-tauri/target/
+        # 使用通配符匹配所有可能的Cargo.lock位置
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
         restore-keys: |
           ${{ runner.os }}-cargo-
